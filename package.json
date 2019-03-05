@@ -1,0 +1,30 @@
+{
+  "name": "coffeecast",
+  "version": "1.0.0",
+  "description": "Simple podcast player",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/D4v1d98Ru1z/CoffeeCast.git"
+  },
+  "keywords": [
+    "podcast",
+    "next",
+    "react",
+    "JavaScript"
+  ],
+  "author": "David Ruiz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/D4v1d98Ru1z/CoffeeCast/issues"
+  },
+  "homepage": "https://github.com/D4v1d98Ru1z/CoffeeCast#readme",
+  "dependencies": {
+    "next": "^8.0.3",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
+  }
+}
