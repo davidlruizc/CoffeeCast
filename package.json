@@ -4,7 +4,10 @@
   "description": "Simple podcast player",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next",
+    "start": "next start",
+    "build": "next build"
   },
   "repository": {
     "type": "git",
