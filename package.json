@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/D4v1d98Ru1z/CoffeeCast#readme",
   "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
     "next": "^8.0.3",
     "react": "^16.8.3",
     "react-dom": "^16.8.3"
