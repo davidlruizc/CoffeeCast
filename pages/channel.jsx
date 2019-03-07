@@ -6,20 +6,21 @@ export default class extends Component {
         // Getting the id from the channel
         let channelId = query.id 
 
-        let reqChannel = await fetch(`https://api.audioboom.com/channels/${channelId}`)
-
+        // Parallel request
+        let [ reqChannel, reqAudio, reqSeries ] = await Promise.all([
+            fetch(`https://api.audioboom.com/channels/${channelId}`),
+            fetch(`https://api.audioboom.com/channels/${channelId}/audio_clips`),
+            fetch(`https://api.audioboom.com/channels/${channelId}/child_channels`)
+        ])
+        
         let dataChannel = await reqChannel.json()
         let channel = dataChannel.body.channel
 
-        // audio_clips is going to list the last podcast of the channel
-        let reqAudio = await fetch(`https://api.audioboom.com/channels/${channelId}/audio_clips`)
-
+        // audio_clips is going to list the last podcast of the channel        
         let dataAudio = await reqAudio.json()
         let audioClip = dataAudio.body.audio_clips
 
         // if a channel has subchannels 
-        let reqSeries = await fetch(`https://api.audioboom.com/channels/${channelId}/child_channels`)
-
         let dataSeries = await reqSeries.json()
         let series = dataSeries.body.channels
 
