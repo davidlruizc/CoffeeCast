@@ -26,7 +26,7 @@ export default class extends Component {
                 channels.map(channel => (
                   <Link 
                     prefetch
-                    href="/channel"
+                    href={`/channel?id=${channel.id}`}
                     key={channel.id}
                   >
                     <a className="channel">
@@ -92,7 +92,6 @@ export default class extends Component {
                 }
               `}
           </style>
-
         </div>
       )
     }
