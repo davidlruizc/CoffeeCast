@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
-
 // library to make server rendering fetch
 import 'isomorphic-fetch'
+import React, { Component } from 'react'
+import Link from 'next/link'
+
 
 export default class extends Component {
     // function to load the main content when is needed to use an API
@@ -10,24 +11,29 @@ export default class extends Component {
         let req = await fetch('https://api.audioboom.com/channels/recommended')
 
         // Bring the channels from body atribute
-        let { body: podcast } = await req.json()
-        return { podcast } 
+        let { body: channels } = await req.json()
+        return { channels } 
     }
     render() {
-      const { podcast } = this.props  
+      const { channels } = this.props  
       return (
         <div>
           <header>CoffeeCast</header>
-          <div className="channels">
+          <div 
+            className="channels" 
+          >
               {
-                podcast.map(channel => (
-                  <a 
-                    className="channel"
+                channels.map(channel => (
+                  <Link 
+                    prefetch
+                    href="/channel"
                     key={channel.id}
                   >
-                    <img src={channel.urls.logo_image.original} alt="Podcast image"/>
-                    <h2>{ channel.title }</h2>
-                  </a>
+                    <a className="channel">
+                      <img src={channel.urls.logo_image.original} alt="Podcast image"/>
+                      <h2>{ channel.title }</h2>
+                    </a>
+                  </Link>
                 ))
               }
           </div>
