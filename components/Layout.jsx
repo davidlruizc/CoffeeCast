@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
 import Link from 'next/link'
+import Head from 'next/head'
 
 export default class Layout extends Component {
   render() {
     const { title, children } = this.props
     return (
       <div>
+        <Head>
+          <title>{ title }</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        </Head>
         <header>
           <Link
             href="/"
@@ -13,7 +18,7 @@ export default class Layout extends Component {
             <a>
               {title}
             </a>
-          </Link>
+          </Link> 
         </header>
         <React.Fragment>
           {
