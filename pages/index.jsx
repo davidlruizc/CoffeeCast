@@ -48,7 +48,6 @@ export default class extends Component {
                   padding: 15px;
                 }
                 .channels {
-                  width: 100%;
                   max-width: 968px;
                   margin: auto;
                   display: grid;
@@ -89,6 +88,7 @@ export default class extends Component {
                 body{
                   margin: 0;
                   background: #F6F6F8;
+                  font-family: system-ui;
                 }
               `}
           </style>

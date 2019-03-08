@@ -62,7 +62,7 @@ export default class  extends Component {
                     display: flex;
                     height: 100%;
                     flex-direction: column;
-                    background: #8756ca;
+                    background: rgb(30, 30, 30);
                     color: white;
                 }
                 picture {

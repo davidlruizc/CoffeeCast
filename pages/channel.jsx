@@ -43,7 +43,7 @@ export default class extends Component {
             {
               series.length > 0 &&
                 <div>
-                  <h2>Series</h2>
+                  <h2 className="subtitles">Series</h2>
                   <div className="channels">
                     {
                         series.map(chapter => (
@@ -71,7 +71,7 @@ export default class extends Component {
                 </div>
             }
           </React.Fragment>
-          <h2>Ultimos Podcast</h2>
+          <h2 className="subtitles">Ultimos Podcast</h2>
           <React.Fragment>
           {
               audioClip.map(clip => (
@@ -98,10 +98,11 @@ export default class extends Component {
         <style jsx>
           {`
             header {
-              color: #fff;
-              background: #8756ca;
+              font-size: 40px;
+              font-weight: 700;
+              color: #FFF;
               padding: 15px;
-              text-align: center;
+              background-color: #1E1E1E;
             }
 
             .banner {
@@ -125,9 +126,15 @@ export default class extends Component {
               text-decoration: none;
             }
             .channel img {
-              border-radius: 3px;
+              box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 8px;
+              border-radius: 8px;
               box-shadow: 0px 2px 6px rgba(0,0,0,0.15);
               width: 100%;
+            }
+            .channel img:hover {
+              box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 24px;
+              transform: translateY(-3px);
+              transition: all 0.2s ease-in-out 0s;  
             }
             h1 {
               font-weight: 600;
@@ -137,6 +144,15 @@ export default class extends Component {
               padding: 5px;
               font-size: 0.9em;
               font-weight: 600;
+              margin: 0;
+              text-align: center;
+            }
+            .subtitles {
+              padding: 5px;
+              font-size: 22px;
+              font-weight: 400;
+              color: rgb(92, 97, 102);
+              line-height: 1.4;
               margin: 0;
               text-align: center;
             }
