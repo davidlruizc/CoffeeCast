@@ -29,7 +29,7 @@ export default class  extends Component {
                     </Link>
                 </nav>
                 <picture>
-                    <div style={{ backgroundImage: `url(${podcastClip.urls.image} || ${podcastClip.channel.urls.logo_image.original})`}}/>
+                    <div style={{ backgroundImage: `url(${podcastClip.urls.image || podcastClip.channel.urls.logo_image.original})`}}/>
                 </picture>
                 <div className="player">
                     <h3>{ podcastClip.title }</h3>
