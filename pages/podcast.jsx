@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Layout from '../components/Layout'
+import PodcastLayout from '../components/PodcastLayout'
 
 export default class  extends Component {
     static async getInitialProps({ query }){

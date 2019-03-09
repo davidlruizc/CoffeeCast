@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Layout from '../components/Layout'
+import ChannelPlaylist from '../components/ChannelPlaylist'
 
 export default class extends Component {
     // fetching the data from a channel

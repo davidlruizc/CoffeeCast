@@ -40,33 +40,38 @@ import Link from 'next/link'
                               ))
                             }
                             </div>
-                        </div>
+                      </div>
                     }
                     </React.Fragment>
-                    <h2 className="subtitles">Ultimos Podcast</h2>
                     <React.Fragment>
-                    {
-                      audioClip.map(clip => (
-                        <Link
-                        prefetch
-                        href={`/podcast?id=${ clip.id }`}
-                        key={clip.id}
-                        >
-                          <a className="podcast">
-                              <h3>
-                                { clip.title }
-                              </h3>
-                              <div className="meta">
-                                {
-                                    // Returns the smallest integer greater than or equal to its numeric argument.
-                                    Math.ceil( clip.duration / 60)
-                                } minutos
-                              </div>
-                          </a>
-                        </Link>
-                      ))
-                    }
-                </React.Fragment>
+                      {
+                        audioClip.length > 0 &&
+                          <React.Fragment>
+                            <h2 className="subtitles">Ultimos Podcast</h2>
+                            {
+                              audioClip.map(clip => (
+                                <Link
+                                prefetch
+                                href={`/podcast?id=${ clip.id }`}
+                                key={clip.id}
+                                >
+                                  <a className="podcast">
+                                      <h3>
+                                        { clip.title }
+                                      </h3>
+                                      <div className="meta">
+                                        {
+                                            // Returns the smallest integer greater than or equal to its numeric argument.
+                                            Math.ceil( clip.duration / 60)
+                                        } minutos
+                                      </div>
+                                  </a>
+                                </Link>
+                              ))
+                            }
+                          </React.Fragment>
+                      }
+                    </React.Fragment>
                 <style jsx>
                   {`
                     header {
