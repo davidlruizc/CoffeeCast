@@ -33,7 +33,7 @@ export default class extends Component {
     const { channel, audioClip, series } = this.props  
     return (
       <Layout
-        title="CoffeeCast"
+        title={channel.title}
       >
         <ChannelPlaylist
           channel={channel}

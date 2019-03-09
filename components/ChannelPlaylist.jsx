@@ -10,7 +10,6 @@ import Link from 'next/link'
                     className="banner" 
                     style={{ backgroundImage: `url(${ channel.urls.banner_image.original })` }}
                   />
-                    <h1>{ channel.title }</h1>
                     <React.Fragment>
                     {
                         series.length > 0 &&
