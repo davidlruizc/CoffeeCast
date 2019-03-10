@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import Layout from '../components/Layout'
 import ChannelPlaylist from '../components/ChannelPlaylist'
+import Error from 'next/error'
 
 export default class extends Component {
     // fetching the data from a channel
-    static async getInitialProps({query}){
+    static async getInitialProps({query, res}){
+      try {
         // Getting the id from the channel
         let channelId = query.id 
 
@@ -15,6 +17,12 @@ export default class extends Component {
             fetch(`https://api.audioboom.com/channels/${channelId}/child_channels`)
         ])
         
+        // Handling status 404
+        if(reqChannel.status >= 400){
+          res.statusCode = reqChannel.status
+          return{ channel: null, audioClip: null, series: null, statusCode: reqChannel.status }
+        }
+
         let dataChannel = await reqChannel.json()
         let channel = dataChannel.body.channel
 
@@ -26,11 +34,26 @@ export default class extends Component {
         let dataSeries = await reqSeries.json()
         let series = dataSeries.body.channels
 
-        return { channel, audioClip, series } 
+        return { channel, audioClip, series, statusCode: 200 } 
+      }
+      catch(e){
+        // Set the status code the get from the server
+        res.statusCode = 503
+        return{ channel: null, audioClip: null, series: null, statusCode: 503 }
+      }
     }
 
   render() {
-    const { channel, audioClip, series } = this.props  
+    const { channel, audioClip, series, statusCode } = this.props  
+
+    if(statusCode !== 200) {
+      return(
+        <Error
+          statusCode={statusCode}
+        />
+      )
+    }
+
     return (
       <Layout
         title={channel.title}
