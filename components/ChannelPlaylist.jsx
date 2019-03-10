@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import GriidChannels from './GriidChannels';
 import PodcastListWithPlayer from './PodcastListWithPlayer';
+import PodcastLayout from './PodcastLayout';
 
  export default class ChannelPlaylist extends Component {
   constructor(props){
@@ -17,13 +18,27 @@ import PodcastListWithPlayer from './PodcastListWithPlayer';
     })
   }
 
+  closePodcast = (event) => {
+    event.preventDefault()
+    this.setState({
+      openPodcast: null
+    })
+  }
+
   render() {
     const { channel, audioClip, series } = this.props
     const { openPodcast } = this.state
 
     return(
       <React.Fragment>
-        { openPodcast && <div>Hay un podcast :3</div> }
+        { openPodcast && 
+          <div className="modal">
+            <PodcastLayout
+              podcastClip={openPodcast}
+              onClose={this.closePodcast}
+            />
+          </div> 
+        }
         <div 
           className="banner" 
           style={{ backgroundImage: `url(${ channel.urls.banner_image.original })` }}
@@ -99,6 +114,14 @@ import PodcastListWithPlayer from './PodcastListWithPlayer';
                 color: #666;
                 margin-top: 0.5em;
                 font-size: 0.8em;
+            }
+            .modal {
+              position: fixed;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              z-index: 99999;
             }
           `}
         </style>
