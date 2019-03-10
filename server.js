@@ -9,4 +9,5 @@ const port = process.env.PORT || 3000
 const {createServer} = require('http')
 app.prepare().then(() => {
   createServer(handler).listen(port)
+  console.log(`Server running http://localhost:${port}`)
 })
