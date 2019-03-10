@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import Link from 'next/link'
+import {Link} from '../routes'
+import slug from '../helpers/slug'
 
 export default class GriidChannels extends Component {
   render() {
@@ -13,7 +14,11 @@ export default class GriidChannels extends Component {
                     channels.map(channel => (
                     <Link 
                         prefetch
-                        href={`/channel?id=${channel.id}`}
+                        route="channel"
+                        params={{
+                            slug: slug(channel.title),
+                            id: channel.id
+                        }}
                         key={channel.id}
                     >
                         <a className="channel">
@@ -28,20 +33,13 @@ export default class GriidChannels extends Component {
             <style jsx>
                 {`
                     /* Styled JSX*/
-                    header{
-                    font-size: 40px;
-                    font-weight: 700;
-                    color: rgb(0, 0, 0);
-                    padding: 15px;
-                    }
                     .channels {
                     max-width: 968px;
                     margin: auto;
                     display: grid;
-                    grid-gap: 32px;
+                    grid-gap: 15px;
                     padding: 15px;
-                    grid-template-columns: 1fr 1fr 1fr;
-                    grid-template-rows: minmax(auto, max-content) minmax(auto, max-content) minmax(auto, max-content);
+                    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
                     }
                     a.channel{
                     display: block;

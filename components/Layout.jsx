@@ -29,7 +29,7 @@ export default class Layout extends Component {
         <style jsx>
           {`
             header{
-              font-size: 40px;
+              font-size: 30px;
               font-weight: 700;
               color: #FFF;
               padding: 15px;

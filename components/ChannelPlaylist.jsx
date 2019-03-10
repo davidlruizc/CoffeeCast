@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import Link from 'next/link'
+import {Link} from '../routes'
+import GriidChannels from './GriidChannels';
+import slug from '../helpers/slug'
 
  export default class ChannelPlaylist extends Component {
      render() {
@@ -15,30 +17,9 @@ import Link from 'next/link'
                         series.length > 0 &&
                         <div>
                             <h2 className="subtitles">Series</h2>
-                            <div className="channels">
-                            {
-                              series.map(chapter => (
-                                <div>
-                                  <Link
-                                      href={`/channel?id=${ chapter.id }`}
-                                      prefetch
-                                  >
-                                    <a className="channel">
-                                        <img 
-                                        src={ chapter.urls.logo_image.original } 
-                                        alt="logo image"
-                                        />
-                                        <h2>
-                                        {
-                                            chapter.title
-                                        }
-                                        </h2>
-                                    </a>
-                                  </Link>
-                                </div>
-                              ))
-                            }
-                            </div>
+                            <GriidChannels
+                              channels={series}
+                            />
                       </div>
                     }
                     </React.Fragment>
@@ -51,7 +32,13 @@ import Link from 'next/link'
                               audioClip.map(clip => (
                                 <Link
                                 prefetch
-                                href={`/podcast?id=${ clip.id }`}
+                                route="podcast"
+                                params={{
+                                  slug: slug(clip.title),
+                                  id: clip.id,
+                                  slugChannel: slug(clip.channel.title),
+                                  idChannel: clip.channel.id
+                                }}
                                 key={clip.id}
                                 >
                                   <a className="podcast">
@@ -73,44 +60,12 @@ import Link from 'next/link'
                     </React.Fragment>
                 <style jsx>
                   {`
-                    header {
-                        font-size: 40px;
-                        font-weight: 700;
-                        color: #FFF;
-                        padding: 15px;
-                        background-color: #1E1E1E;
-                    }
-
                     .banner {
                         width: 100%;
                         padding-bottom: 25%;
                         background-position: 50% 50%;
                         background-size: cover;
                         background-color: #aaa;
-                    }
-
-                    .channels {
-                        display: grid;
-                        grid-gap: 15px;
-                        padding: 15px;
-                        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-                    }
-                    a.channel {
-                        display: block;
-                        margin-bottom: 0.5em;
-                        color: #333;
-                        text-decoration: none;
-                    }
-                    .channel img {
-                        box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 8px;
-                        border-radius: 8px;
-                        box-shadow: 0px 2px 6px rgba(0,0,0,0.15);
-                        width: 100%;
-                    }
-                    .channel img:hover {
-                        box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 24px;
-                        transform: translateY(-3px);
-                        transition: all 0.2s ease-in-out 0s;  
                     }
                     h1 {
                         font-weight: 600;
