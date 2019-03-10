@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "export": "next export",
+    "start": "NODE_ENV=production node server.js",
+    "deploy": "npm run build && npm run export"
   },
   "repository": {
     "type": "git",
