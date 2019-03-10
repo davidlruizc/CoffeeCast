@@ -4,10 +4,9 @@
   "description": "Simple podcast player",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "next",
-    "start": "next start",
-    "build": "next build"
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +27,7 @@
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
     "next": "^8.0.3",
+    "next-routes": "^1.4.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3"
   }
