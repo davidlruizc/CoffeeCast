@@ -1,9 +1,10 @@
 # CoffeeCast
 
 Simpler podcast player web app created using Next.js + React.js. Working with the API [Audioboom](https://api.audioboom.com/) to show all the podcasts.
-![CoffeeCast]()
 
-### Try it the live project [here]()
+![CoffeeCast](/.readme-static/CoffeeCast.PNG)
+
+### Try it the live project [here with Netlify](https://coffeecast.netlify.com/) or [Now](https://coffeecast-mtspso742.now.sh)
  
 ## Getting started 
 - It is necessary to have Node.js 10.x installed.
