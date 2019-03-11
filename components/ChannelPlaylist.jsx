@@ -32,6 +32,10 @@ import PodcastLayout from './PodcastLayout';
 
     return(
       <React.Fragment>
+      <div 
+        className="banner" 
+        style={{ backgroundImage: `url(${ channel.urls.banner_image.original })` }}
+      />
         { openPodcast && 
           <div className="modal">
             <PodcastLayout
@@ -40,10 +44,6 @@ import PodcastLayout from './PodcastLayout';
             />
           </div> 
         }
-        <div 
-          className="banner" 
-          style={{ backgroundImage: `url(${ channel.urls.banner_image.original })` }}
-        />
         <React.Fragment>
         {
           series.length > 0 &&
