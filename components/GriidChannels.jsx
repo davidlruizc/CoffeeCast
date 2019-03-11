@@ -13,6 +13,7 @@ export default class GriidChannels extends Component {
                 {
                     channels.map(channel => (
                     <Link 
+                        prefetch
                         route="channel"
                         params={{
                             slug: slug(channel.title),
