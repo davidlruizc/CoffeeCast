@@ -1,4 +1,4 @@
-# CoffeeCast
+# CoffeeCast with Next.js
 
 Simpler podcast player web app created using Next.js + React.js. Working with the API [Audioboom](https://api.audioboom.com/) to show all the podcasts.
 
